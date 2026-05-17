@@ -27,3 +27,27 @@ Run the scraper:
 ```bash
 python scripts/scrape_reviews.py
 ```
+
+## Database Setup
+
+This project uses PostgreSQL to persistently store scraped review data and bank metadata.
+
+### Prerequisites
+1. Ensure PostgreSQL is installed and running on your system.
+2. Create a new database named `bank_reviews`.
+
+### Configuration
+1. Copy the `.env.example` file to a new file named `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Update `.env` with your PostgreSQL credentials (e.g., `DB_PASSWORD`).
+
+### Loading Data
+Execute the loading script to map bank records and insert processed reviews into the database schema:
+```bash
+python scripts/load_to_db.py
+```
+
+### Verification
+You can execute the queries located in `database/verification_queries.sql` via pgAdmin or psql to verify database integrity (count reviews, average ratings, check missing text/scores).
